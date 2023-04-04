@@ -15,12 +15,19 @@ class Autentificare():
     brnAuth = (By.CSS_SELECTOR, "button[type='submit']")
     btnDisconnect = (By.XPATH, "//li[8]")
     eroare = (By.XPATH, "//div/span")
+    popup = ()
 
     def getTel(self):
+        self.wait.until(expected_conditions.presence_of_element_located((Autentificare.nrTel)))
+        self.wait.until(expected_conditions.visibility_of_element_located((Autentificare.nrTel)))
+        self.wait.until(expected_conditions.element_to_be_clickable((Autentificare.nrTel)))
         self.driver.find_element(*Autentificare.nrTel).clear()
         return self.driver.find_element(*Autentificare.nrTel)
 
     def getPass(self):
+        self.wait.until(expected_conditions.presence_of_element_located((Autentificare.password)))
+        self.wait.until(expected_conditions.visibility_of_element_located((Autentificare.password)))
+        self.wait.until(expected_conditions.element_to_be_clickable((Autentificare.password)))
         self.driver.find_element(*Autentificare.password).clear()
         return self.driver.find_element(*Autentificare.password)
 

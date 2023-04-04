@@ -11,10 +11,12 @@ class NevoiPage():
 
     nevoi = (By.XPATH, "//ul/li[2]/a/p")
     vizualizeaza = (By.XPATH, "//tr[1]//i[@title='Vizualizeaza']")
-    aplica = (By.XPATH, "//tr[1]//i[@title='Aplica']")
+    aplica = (By.XPATH, "//i[2][not(contains(@disabled,'disabled'))]")
     confAplica = (By.XPATH, "//footer/button[1]")
-    completeaza = (By.XPATH, "//i[3][not(contains(@disabled,'disabled'))]")
+    completeaza = (By.XPATH, "//tr[1]//i[3]")
     star = (By.CSS_SELECTOR, "span:nth-child(5) polygon:last-of-type")
+    search = (By.NAME, "Filter")
+    comment = (By.XPATH, "//div/textarea")
 
     def getNevoiPage(self):
         self.wait.until(expected_conditions.element_to_be_clickable((NevoiPage.nevoi)))
@@ -45,3 +47,10 @@ class NevoiPage():
         self.wait.until(expected_conditions.element_to_be_clickable((NevoiPage.star)))
         self.wait.until(expected_conditions.presence_of_element_located((NevoiPage.star)))
         return self.driver.find_element(*NevoiPage.star)
+
+    def getSearch(self):
+        self.driver.find_element(*NevoiPage.search).clear()
+        return self.driver.find_element(*NevoiPage.search)
+
+    def getComment(self):
+        return self.driver.find_element(*NevoiPage.comment)

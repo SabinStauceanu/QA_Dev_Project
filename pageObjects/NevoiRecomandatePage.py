@@ -25,9 +25,10 @@ class NevoiRecomandatePage():
     send = (By.CSS_SELECTOR, ".btn.btn-primary")
     eroare = (By.XPATH, "//div[@role='group']/div/div/span")
     vizualizeaza = (By.XPATH, "//tr[1]//i[@title='Vizualizeaza']")
-    sterge = (By.XPATH, "//tr[1]//i[@title='Sterge']")
+    sterge = (By.XPATH, "//tr[1]//i[4]")
     confSetrge = (By.XPATH, "//footer/button[1]")
     search = (By.NAME, "Filter")
+    status = (By.XPATH, "//th[5]")
 
     def getNevoiRecomandatePage(self):
         self.wait.until(expected_conditions.element_to_be_clickable((NevoiRecomandatePage.nevoi)))
@@ -108,17 +109,22 @@ class NevoiRecomandatePage():
         return self.driver.find_element(*NevoiRecomandatePage.vizualizeaza)
 
     def getSterge(self):
+        self.wait.until(expected_conditions.element_to_be_clickable((NevoiRecomandatePage.sterge)))
         self.wait.until(expected_conditions.presence_of_element_located((NevoiRecomandatePage.sterge)))
-        self.wait.until(expected_conditions.visibility_of_element_located((NevoiRecomandatePage.sterge)))
         return self.driver.find_element(*NevoiRecomandatePage.sterge)
+
 
     def getConfirmareStergere(self):
         self.wait.until(expected_conditions.visibility_of_element_located((NevoiRecomandatePage.confSetrge)))
-        self.wait.until(expected_conditions.visibility_of_element_located((NevoiRecomandatePage.confSetrge)))
+        self.wait.until(expected_conditions.presence_of_element_located((NevoiRecomandatePage.confSetrge)))
         return self.driver.find_element(*NevoiRecomandatePage.confSetrge)
 
     def getSearch(self):
         self.driver.find_element(*NevoiRecomandatePage.search).clear()
         return self.driver.find_element(*NevoiRecomandatePage.search)
+
+    def getClickStatus(self):
+        time.sleep(1)
+        return self.driver.find_element(*NevoiRecomandatePage.status)
 
 
