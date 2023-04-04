@@ -9,7 +9,6 @@ from utilities.BaseClass import BaseClass
 
 
 class TestDevQA(BaseClass):
-
     def test_TC1(self):
         log = self.getLogger()
         headers = Headers(self.driver, self.wait)

@@ -120,6 +120,7 @@ class NevoiRecomandatePage():
         return self.driver.find_element(*NevoiRecomandatePage.confSetrge)
 
     def getSearch(self):
+        time.sleep(1)
         self.driver.find_element(*NevoiRecomandatePage.search).clear()
         return self.driver.find_element(*NevoiRecomandatePage.search)
 

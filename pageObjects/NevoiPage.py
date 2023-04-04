@@ -49,6 +49,7 @@ class NevoiPage():
         return self.driver.find_element(*NevoiPage.star)
 
     def getSearch(self):
+        time.sleep(1)
         self.driver.find_element(*NevoiPage.search).clear()
         return self.driver.find_element(*NevoiPage.search)
 
