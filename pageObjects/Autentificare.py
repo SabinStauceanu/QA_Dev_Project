@@ -15,7 +15,7 @@ class Autentificare():
     brnAuth = (By.CSS_SELECTOR, "button[type='submit']")
     btnDisconnect = (By.XPATH, "//li[8]")
     eroare = (By.XPATH, "//div/span")
-    popup = ()
+    popup = (By.XPATH, "//div[@class='alert-container']//button")
 
     def getTel(self):
         self.wait.until(expected_conditions.presence_of_element_located((Autentificare.nrTel)))
@@ -40,3 +40,7 @@ class Autentificare():
     def getEroare(self):
         self.wait.until(expected_conditions.presence_of_element_located((Autentificare.eroare)))
         return self.driver.find_element(*Autentificare.eroare)
+
+    def getClosePopup(self):
+        self.wait.until(expected_conditions.element_to_be_clickable((Autentificare.popup)))
+        return self.driver.find_element(*Autentificare.popup)

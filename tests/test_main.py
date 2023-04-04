@@ -163,6 +163,7 @@ class TestDevQA(BaseClass):
     def test_TC14(self):
         log = self.getLogger()
         autentificare = Autentificare(self.driver, self.wait)
+        autentificare.getClosePopup().click()
         autentificare.getDisconnect().click()
         log.info("TC14 has passed!")
 
