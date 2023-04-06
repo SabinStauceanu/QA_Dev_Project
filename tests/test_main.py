@@ -73,6 +73,7 @@ class TestDevQA(BaseClass):
         nevoiRecomandatePage.getPrenume().send_keys("Morty")
         nevoiRecomandatePage.getNrTel().send_keys("080080080")
         categorie = nevoiRecomandatePage.getCategorie()
+        # Am folosit try finally deoarece imi da eroare la linia 79 si totusi linia respectiva se executa urmand sa imi opreasca procesul de a rula codul dupa linia respectiva
         try:
             for categoria in categorie:
                 if categoria.text == "Alimente":
