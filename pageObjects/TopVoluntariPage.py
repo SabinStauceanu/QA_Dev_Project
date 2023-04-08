@@ -18,10 +18,6 @@ class TopVoluntariPage():
     def getVoluntari(self):
         time.sleep(1)
         Voluntari = self.driver.find_elements(*TopVoluntariPage.voluntari)
-        if self.driver.find_element(*TopVoluntariPage.buttonVoluntari).is_enabled():
-            time.sleep(1)
-            self.driver.find_element(*TopVoluntariPage.buttonVoluntari).click()
-            Voluntari.append(self.driver.find_elements(*TopVoluntariPage.voluntari))
         return Voluntari
 
     def getHarta(self):

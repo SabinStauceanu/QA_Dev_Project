@@ -28,7 +28,7 @@ class TestDevQA(BaseClass):
         headers.getTopVoluntari().click()
         assert topVoluntari.getHarta().is_displayed()
         voluntari = topVoluntari.getVoluntari()
-        log.info("The number of volunteer registered is:" + str(len(voluntari)))
+        log.info("The number of volunteer present on page is:" + str(len(voluntari)))
         log.info("TC2 has passed!")
 
     def test_TC3(self):
