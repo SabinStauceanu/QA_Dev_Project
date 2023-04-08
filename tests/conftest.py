@@ -26,5 +26,5 @@ def setup(request):
     request.cls.driver = driver
     request.cls.act = act
     request.cls.wait = wait
-    #yield
-    #driver.close()
+    yield
+    driver.close()
