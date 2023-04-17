@@ -1,5 +1,7 @@
 import time
 
+import requests
+
 from pageObjects.Autentificare import Autentificare
 from pageObjects.Headers import Headers
 from pageObjects.NevoiPage import NevoiPage
@@ -167,4 +169,46 @@ class TestDevQA(BaseClass):
         autentificare.getDisconnect().click()
         log.info("TC14 has passed!")
 
+    def test_TC15(self):
+        log = self.getLogger()
+        ENDPOINT = 'https://iwanttohelp.bim.assistcloud.services/volunteers/api/v1/profile'
+        headers = {'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36',
+                   'authority':'iwanttohelp.bim.assistcloud.services',
+                   'accept':'application/json',
+                   'accept-language':'en-US,en;q=0.9',
+                   'access-control-allow-origin':'*',
+                   'authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODE4MDMyNjAsInN1YiI6N30.qyuWZe_euBogn-MdgDRN8YqHw8NIJw7a2_35dkx3OPk',
+                   'referer':'https://iwanttohelp.bim.assistcloud.services/dashboard/profile',
+                   'sec-ch-ua':'"Chromium";v="112", "Google Chrome";v="112", "Not:A-Brand";v="99"',
+                   'sec-ch-ua-mobile':'?0',
+                   'sec-ch-ua-platform':'Windows',
+                   'sec-fetch-mode':'cors',
+                   'sec-fetch-dest':'empty',
+                   'sec-fetch-site':'cors', }
+
+        response = requests.get(ENDPOINT, headers=headers)
+        log.info(response.status_code)
+        log.info(response.json())
+        log.info("TC15 has passed!")
+
+    def test_TC16(self):
+        log = self.getLogger()
+        ENDPOINT = 'https://iwanttohelp.bim.assistcloud.services/volunteers/api/v1/recommended_needs'
+        headers = {'authority':'iwanttohelp.bim.assistcloud.services:accept:application/json',
+                    'accept-language':'en-US,en;q=0.9',
+                    'access-control-allow-origin':'*',
+                    'authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODE4MDMyNjAsInN1YiI6N30.qyuWZe_euBogn-MdgDRN8YqHw8NIJw7a2_35dkx3OPk',
+                    'if-none-match':'W/"f683fbe4a26024b616d68d264dd05c9a"',
+                    'referer':'https://iwanttohelp.bim.assistcloud.services/dashboard/recommended_needs',
+                    'sec-ch-ua':'"Chromium";v="112", "Google Chrome";v="112", "Not:A-Brand";v="99"',
+                    'sec-ch-ua-mobile':'?0',
+                    'sec-ch-ua-platform':'"Windows"',
+                    'sec-fetch-dest':'empty',
+                    'sec-fetch-mode':'cors',
+                    'sec-fetch-site':'same-origin',
+                    'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36'}
+        response = requests.get(ENDPOINT, headers=headers)
+        log.info(response.status_code)
+        log.info(response.json())
+        log.info("TC16 has passed!")
 
